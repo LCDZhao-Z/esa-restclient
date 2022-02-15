@@ -28,7 +28,7 @@ import java.util.concurrent.CompletableFuture;
 
 class NettyTransceiver extends HttpTransceiverImpl {
 
-    NettyTransceiver(EventLoopGroup ioThreads, CachedChannelPools channelPools,
+    NettyTransceiver(EventLoopGroup[] ioThreads, CachedChannelPools channelPools,
                      HttpClientBuilder builder, ChannelPoolOptions channelPoolOptions,
                      ChannelPoolFactory channelPoolFactory) {
         super(ioThreads, channelPools, builder, channelPoolOptions, channelPoolFactory);

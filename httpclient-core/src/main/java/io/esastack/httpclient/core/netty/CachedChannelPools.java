@@ -151,7 +151,7 @@ public class CachedChannelPools implements ConnectionPoolMetricProvider {
             return;
         }
 
-        io.netty.channel.pool.ChannelPool underlying = channelPool.underlying;
+        io.netty.channel.pool.ChannelPool underlying = channelPool.next();
         if (!(underlying instanceof SimpleChannelPool)) {
             underlying.close();
             return;
@@ -205,7 +205,7 @@ public class CachedChannelPools implements ConnectionPoolMetricProvider {
         private final ChannelPoolOptions options;
 
         private ChannelPoolMetricImpl(ChannelPool channelPool) {
-            this.channelPool = (FixedChannelPool) channelPool.underlying;
+            this.channelPool = (FixedChannelPool) channelPool.next();
             this.options = channelPool.options;
         }
 

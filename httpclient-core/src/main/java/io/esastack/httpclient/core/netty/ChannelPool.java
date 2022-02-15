@@ -18,17 +18,26 @@ package io.esastack.httpclient.core.netty;
 import esa.commons.Checks;
 import io.esastack.httpclient.core.config.ChannelPoolOptions;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 final class ChannelPool {
 
     final boolean ssl;
-    final io.netty.channel.pool.ChannelPool underlying;
+    private final io.netty.channel.pool.ChannelPool[] shardingChannelPools;
     final ChannelPoolOptions options;
+    private final AtomicInteger idx = new AtomicInteger();
+    private final int mask;
 
-    ChannelPool(boolean ssl, io.netty.channel.pool.ChannelPool underlying, ChannelPoolOptions options) {
-        Checks.checkNotNull(underlying, "underlying");
+    ChannelPool(boolean ssl, io.netty.channel.pool.ChannelPool[] shardingChannelPools, ChannelPoolOptions options) {
+        Checks.checkNotNull(shardingChannelPools, "shardingChannelPools");
         Checks.checkNotNull(options, "options");
         this.ssl = ssl;
-        this.underlying = underlying;
+        this.shardingChannelPools = shardingChannelPools;
+        this.mask = shardingChannelPools.length - 1;
         this.options = options;
+    }
+
+    io.netty.channel.pool.ChannelPool next() {
+        return shardingChannelPools[idx.getAndIncrement() & mask];
     }
 }

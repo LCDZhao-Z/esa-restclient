@@ -67,9 +67,32 @@ final class ChannelPoolFactory {
     ChannelPool create(boolean ssl,
                        boolean keepAlive,
                        SocketAddress address,
-                       EventLoopGroup ioThreads,
+                       EventLoopGroup[] ioThreads,
                        ChannelPoolOptions options,
                        HttpClientBuilder builder) {
+
+        io.netty.channel.pool.ChannelPool[] shardingChannelPools =
+                new io.netty.channel.pool.ChannelPool[ioThreads.length];
+        for (int i = 0; i < ioThreads.length; i++) {
+            shardingChannelPools[i] = createShardingChannelPool(
+                    ssl,
+                    keepAlive,
+                    address,
+                    ioThreads[i],
+                    options,
+                    builder
+            );
+        }
+
+        return new ChannelPool(ssl, shardingChannelPools, options);
+    }
+
+    private io.netty.channel.pool.ChannelPool createShardingChannelPool(boolean ssl,
+                                                                        boolean keepAlive,
+                                                                        SocketAddress address,
+                                                                        EventLoopGroup ioThreads,
+                                                                        ChannelPoolOptions options,
+                                                                        HttpClientBuilder builder) {
         final Bootstrap bootstrap = buildBootstrap(address,
                 ioThreads,
                 builder.netOptions(),
@@ -112,8 +135,7 @@ final class ChannelPoolFactory {
                     address, options);
             underlying = new DirectConnectAndCloseChannelPool(bootstrap, handler, initializer);
         }
-
-        return new ChannelPool(ssl, underlying, options);
+        return underlying;
     }
 
     private SslHandler buildSslHandler(int connectTimeout, SocketAddress address, SslOptions sslOptions) {
@@ -141,12 +163,12 @@ final class ChannelPoolFactory {
     /**
      * Designed as package visibility for unit test purpose.
      *
-     * @param address           address
-     * @param ioThreads         ioThreads
-     * @param netOptions        net options
-     * @param connectTimeout    connect timeout
-     * @param resolver          resolver
-     * @return                  bootstrap
+     * @param address        address
+     * @param ioThreads      ioThreads
+     * @param netOptions     net options
+     * @param connectTimeout connect timeout
+     * @param resolver       resolver
+     * @return bootstrap
      */
     static Bootstrap buildBootstrap(SocketAddress address,
                                     EventLoopGroup ioThreads,

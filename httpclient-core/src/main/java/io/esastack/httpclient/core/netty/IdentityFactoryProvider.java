@@ -23,14 +23,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 class IdentityFactoryProvider {
 
-    private static final IdentityFactory<EventLoopGroup> IO_THREADS_IDENTITY_FACTORY =
-            new IdentityFactory<EventLoopGroup>() {
+    private static final IdentityFactory<EventLoopGroup[]> IO_THREADS_IDENTITY_FACTORY =
+            new IdentityFactory<EventLoopGroup[]>() {
 
                 private static final String PREFIX = "IO-Threads-Pool-";
                 private final AtomicInteger index = new AtomicInteger();
 
                 @Override
-                public Identified<EventLoopGroup> generate(EventLoopGroup value) {
+                public Identified<EventLoopGroup[]> generate(EventLoopGroup[] value) {
                     return new Identified<>(value, PREFIX + index.incrementAndGet());
                 }
             };
@@ -50,7 +50,7 @@ class IdentityFactoryProvider {
     private IdentityFactoryProvider() {
     }
 
-    static IdentityFactory<EventLoopGroup> ioThreadsIdentityFactory() {
+    static IdentityFactory<EventLoopGroup[]> ioThreadsIdentityFactory() {
         return IO_THREADS_IDENTITY_FACTORY;
     }
 

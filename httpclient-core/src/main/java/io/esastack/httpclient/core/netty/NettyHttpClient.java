@@ -127,13 +127,13 @@ public class NettyHttpClient implements HttpClient, ModifiableClient<NettyHttpCl
     /**
      * Shared io threads pool
      */
-    private static final IdentityFactory.Identified<EventLoopGroup> SHARED_IO_THREADS = IdentityFactoryProvider
+    private static final IdentityFactory.Identified<EventLoopGroup[]> SHARED_IO_THREADS = IdentityFactoryProvider
             .ioThreadsIdentityFactory().generate(sharedIoThreads());
 
     protected final HttpClientBuilder builder;
 
     private final CachedChannelPools channelPools;
-    private final IdentityFactory.Identified<EventLoopGroup> ioThreads;
+    private final IdentityFactory.Identified<EventLoopGroup[]> ioThreads;
     private final IdentityFactory.Identified<ThreadPoolExecutor> callbackExecutor;
     private final String id;
 
@@ -148,7 +148,7 @@ public class NettyHttpClient implements HttpClient, ModifiableClient<NettyHttpCl
 
     private NettyHttpClient(HttpClientBuilder builder,
                             CachedChannelPools channelPools,
-                            IdentityFactory.Identified<EventLoopGroup> ioThreads,
+                            IdentityFactory.Identified<EventLoopGroup[]> ioThreads,
                             IdentityFactory.Identified<ThreadPoolExecutor> callbackExecutor) {
         Checks.checkNotNull(builder, "builder");
         Checks.checkNotNull(ioThreads, "ioThreads");
@@ -264,8 +264,8 @@ public class NettyHttpClient implements HttpClient, ModifiableClient<NettyHttpCl
 
     @Override
     public IoThreadGroupMetric ioThreadsMetric() {
-        if (ioThreads.origin() instanceof MultithreadEventLoopGroup) {
-            return new IoThreadGroupMetricImpl((MultithreadEventLoopGroup) ioThreads.origin(), ioThreads.id());
+        if (ioThreads.origin()[0] instanceof MultithreadEventLoopGroup) {
+            return new IoThreadGroupMetricImpl((MultithreadEventLoopGroup) ioThreads.origin()[0], ioThreads.id());
         } else {
             return null;
         }
@@ -325,7 +325,7 @@ public class NettyHttpClient implements HttpClient, ModifiableClient<NettyHttpCl
         // Shutdown IO-Threads
         if (SHARED_IO_THREADS.origin() != null) {
             try {
-                SHARED_IO_THREADS.origin().shutdownGracefully(IOTHREADS_GRACEFULLY_SHUTDOWN_QUIET_PERIOD,
+                SHARED_IO_THREADS.origin()[0].shutdownGracefully(IOTHREADS_GRACEFULLY_SHUTDOWN_QUIET_PERIOD,
                         IOTHREADS_GRACEFULLY_SHUTDOWN_TIMEOUT_SECONDS,
                         TimeUnit.SECONDS);
             } catch (Throwable ex) {
@@ -441,7 +441,7 @@ public class NettyHttpClient implements HttpClient, ModifiableClient<NettyHttpCl
      * @param channelPools channel pool map
      * @return executor
      */
-    protected RequestExecutor build(EventLoopGroup ioThreads,
+    protected RequestExecutor build(EventLoopGroup[] ioThreads,
                                     CachedChannelPools channelPools,
                                     ChannelPoolOptions channelPoolOptions) {
         HttpTransceiver transceiver = new NettyTransceiver(ioThreads,
@@ -479,13 +479,22 @@ public class NettyHttpClient implements HttpClient, ModifiableClient<NettyHttpCl
                 .build();
     }
 
-    private static EventLoopGroup sharedIoThreads() {
+    private static EventLoopGroup[] sharedIoThreads() {
+        EventLoopGroup[] eventLoopGroups = new EventLoopGroup[IOTHREADS];
         if (PREFER_NATIVE && Epoll.isAvailable()) {
-            return new EpollEventLoopGroup(IOTHREADS,
-                    new ThreadFactoryImpl("NettyHttpClient-I/O", true));
+            for (int i = 0; i < IOTHREADS; i++) {
+                eventLoopGroups[i] = new EpollEventLoopGroup(1,
+                        new ThreadFactoryImpl("NettyHttpClient-I/O-" + i, true));
+            }
+
+            return eventLoopGroups;
         } else {
-            return new NioEventLoopGroup(IOTHREADS,
-                    new ThreadFactoryImpl("NettyHttpClient-I/O", true));
+            for (int i = 0; i < IOTHREADS; i++) {
+                eventLoopGroups[i] = new NioEventLoopGroup(1,
+                        new ThreadFactoryImpl("NettyHttpClient-I/O-" + i, true));
+            }
+
+            return eventLoopGroups;
         }
     }
 

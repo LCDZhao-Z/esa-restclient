@@ -74,7 +74,7 @@ class HttpTransceiverImpl implements HttpTransceiver {
     private static final H1TransceiverHandle H1_HANDLE = new H1TransceiverHandle();
     private static final H2TransceiverHandle H2_HANDLE = new H2TransceiverHandle();
 
-    private final EventLoopGroup ioThreads;
+    private final EventLoopGroup[] ioThreads;
     private final CachedChannelPools channelPools;
     private final HttpClientBuilder builder;
     private final ChannelPoolFactory channelPoolFactory;
@@ -94,7 +94,7 @@ class HttpTransceiverImpl implements HttpTransceiver {
                 SystemPropertyUtil.getInt(HASHEDWHEELTIMER_SIZE_KEY, 512));
     }
 
-    HttpTransceiverImpl(EventLoopGroup ioThreads,
+    HttpTransceiverImpl(EventLoopGroup[] ioThreads,
                         CachedChannelPools channelPools,
                         HttpClientBuilder builder,
                         ChannelPoolOptions channelPoolOptions,
@@ -155,13 +155,13 @@ class HttpTransceiverImpl implements HttpTransceiver {
 
         final ChannelPool underlying;
         if (channelPool != null) {
-            underlying = channelPool.underlying;
+            underlying = channelPool.next();
         } else {
             boolean ssl = Scheme.HTTPS.name0().equals(request.scheme());
             underlying = channelPools.getOrCreate(keepAlive, address,
                     (addr) -> channelPoolFactory.create(ssl, keepAlive, addr, ioThreads,
                             detectOptions(address), builder))
-                    .underlying;
+                    .next();
         }
 
         execCtx.listener().onConnectionPoolAcquired(request, execCtx.ctx(), address);
@@ -178,12 +178,12 @@ class HttpTransceiverImpl implements HttpTransceiver {
      *
      * <b>IMPORTANT</b>: must release the channel to channelPool in any condition.
      *
-     * @param request   request
-     * @param execCtx   ctx
-     * @param address   address
-     * @param channelPool   channelPool
-     * @param channel   channel
-     * @param response  response
+     * @param request     request
+     * @param execCtx     ctx
+     * @param address     address
+     * @param channelPool channelPool
+     * @param channel     channel
+     * @param response    response
      */
     protected void onAcquireChannelSuccess(HttpRequest request, ExecContext execCtx,
                                            SocketAddress address, ChannelPool channelPool,
@@ -251,14 +251,14 @@ class HttpTransceiverImpl implements HttpTransceiver {
      *
      * <b>IMPORTANT</b>: must release the channel to channelPool in any condition.
      *
-     * @param request   request
-     * @param execCtx   execCtx
-     * @param http2     http2
-     * @param version   version, may be http1.0/1.1 or http2.
-     * @param channel   channel
+     * @param request     request
+     * @param execCtx     execCtx
+     * @param http2       http2
+     * @param version     version, may be http1.0/1.1 or http2.
+     * @param channel     channel
      * @param channelPool channelPool
-     * @param registry  registry
-     * @param response  response
+     * @param registry    registry
+     * @param response    response
      */
     protected void doWrite(HttpRequest request,
                            ExecContext execCtx,
@@ -299,15 +299,15 @@ class HttpTransceiverImpl implements HttpTransceiver {
     /**
      * Adds read-timeout-task after writing.
      *
-     * @param requestId requestId
-     * @param request   request
-     * @param execCtx   ctx
-     * @param writer    writer
-     * @param headFuture    headFuture
-     * @param endFuture endFuture
-     * @param handle    handle, which can release channel by proxying {@link Listener}.
-     * @param registry  registry
-     * @param response  response
+     * @param requestId  requestId
+     * @param request    request
+     * @param execCtx    ctx
+     * @param writer     writer
+     * @param headFuture headFuture
+     * @param endFuture  endFuture
+     * @param handle     handle, which can release channel by proxying {@link Listener}.
+     * @param registry   registry
+     * @param response   response
      */
     protected void afterWriting(int requestId,
                                 HttpRequest request,
@@ -374,11 +374,11 @@ class HttpTransceiverImpl implements HttpTransceiver {
 
     /**
      * Try to end and clean {@link ResponseHandle} exceptionally.
-     *
+     * <p>
      * The main logic described as:
      * 1. If the requestId has been added to {@link HandleRegistry} then we try to remove and end it.
      * 2. If the requestId hasn't been added to {@link HandleRegistry} then we just end the {@link TimeoutHandle}
-     *    directly.
+     * directly.
      *
      * @param request   request
      * @param execCtx   execCtx
@@ -422,8 +422,8 @@ class HttpTransceiverImpl implements HttpTransceiver {
     /**
      * Designed as package visibility for unit test purpose.
      *
-     * @param address       address
-     * @return              options
+     * @param address address
+     * @return options
      */
     ChannelPoolOptions detectOptions(SocketAddress address) {
         ChannelPoolOptionsProvider provider;
@@ -532,8 +532,8 @@ class HttpTransceiverImpl implements HttpTransceiver {
     /**
      * Set keepAlive to given headers.
      *
-     * @param headers   headers
-     * @param version   version
+     * @param headers headers
+     * @param version version
      */
     private void setKeepAliveIfNecessary(Http1HeadersImpl headers, io.esastack.commons.net.http.HttpVersion version) {
         if (io.esastack.commons.net.http.HttpVersion.HTTP_2 == builder.version()) {
