@@ -21,64 +21,92 @@
 <title>Encoder | ESA Restclient</title>
 <meta name="description" content="`RestClient`会自动根据用户的 `Headers` 与 `Entity` 等选择合适的`Encoder`进行`Encode`。其内置了下面这些`Encoder`：
  
-  - Json
-    - jackson(默认)
-    - fastjson
-    - gson
-  - ProtoBuf
-  - File
-  - String
-  - byte[]
+ - Json
+   
+    - jackson ：默认，自动通过SPI的方式注入到RestClient中
+
+    - fastjson ：需要引入`fastjson`依赖,并将`FastJsonCodec`添加到RestClient中
+
+    - gson ：需要引入`gson`依赖,并将`GsonCodec`添加到RestClient中
+
+  - ProtoBuf ：需要引入`ProtoBuf`依赖,并将`ProtoBufCodec`添加到RestClient中
+
+  - File ：自动通过SPI的方式注入到RestClient中
+
+  - String ：自动通过SPI的方式注入到RestClient中
+
+  - byte[] ：自动通过SPI的方式注入到RestClient中
 
 除此之外`RestClient`也支持用户自定义`Encoder`。
 ">
 <meta property="og:title" content="Encoder" />
 <meta property="og:description" content="`RestClient`会自动根据用户的 `Headers` 与 `Entity` 等选择合适的`Encoder`进行`Encode`。其内置了下面这些`Encoder`：
  
-  - Json
-    - jackson(默认)
-    - fastjson
-    - gson
-  - ProtoBuf
-  - File
-  - String
-  - byte[]
+ - Json
+   
+    - jackson ：默认，自动通过SPI的方式注入到RestClient中
+
+    - fastjson ：需要引入`fastjson`依赖,并将`FastJsonCodec`添加到RestClient中
+
+    - gson ：需要引入`gson`依赖,并将`GsonCodec`添加到RestClient中
+
+  - ProtoBuf ：需要引入`ProtoBuf`依赖,并将`ProtoBufCodec`添加到RestClient中
+
+  - File ：自动通过SPI的方式注入到RestClient中
+
+  - String ：自动通过SPI的方式注入到RestClient中
+
+  - byte[] ：自动通过SPI的方式注入到RestClient中
 
 除此之外`RestClient`也支持用户自定义`Encoder`。
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/codec/encoder/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2022-02-22T10:53:13+08:00" /><meta property="og:site_name" content="ESA Restclient" />
+<meta property="article:modified_time" content="2022-03-07T16:05:09+08:00" /><meta property="og:site_name" content="ESA Restclient" />
 
 <meta itemprop="name" content="Encoder">
 <meta itemprop="description" content="`RestClient`会自动根据用户的 `Headers` 与 `Entity` 等选择合适的`Encoder`进行`Encode`。其内置了下面这些`Encoder`：
  
-  - Json
-    - jackson(默认)
-    - fastjson
-    - gson
-  - ProtoBuf
-  - File
-  - String
-  - byte[]
+ - Json
+   
+    - jackson ：默认，自动通过SPI的方式注入到RestClient中
+
+    - fastjson ：需要引入`fastjson`依赖,并将`FastJsonCodec`添加到RestClient中
+
+    - gson ：需要引入`gson`依赖,并将`GsonCodec`添加到RestClient中
+
+  - ProtoBuf ：需要引入`ProtoBuf`依赖,并将`ProtoBufCodec`添加到RestClient中
+
+  - File ：自动通过SPI的方式注入到RestClient中
+
+  - String ：自动通过SPI的方式注入到RestClient中
+
+  - byte[] ：自动通过SPI的方式注入到RestClient中
 
 除此之外`RestClient`也支持用户自定义`Encoder`。
 ">
-<meta itemprop="dateModified" content="2022-02-22T10:53:13+08:00" />
-<meta itemprop="wordCount" content="266">
+<meta itemprop="dateModified" content="2022-03-07T16:05:09+08:00" />
+<meta itemprop="wordCount" content="281">
 <meta itemprop="keywords" content="extension," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Encoder"/>
 <meta name="twitter:description" content="`RestClient`会自动根据用户的 `Headers` 与 `Entity` 等选择合适的`Encoder`进行`Encode`。其内置了下面这些`Encoder`：
  
-  - Json
-    - jackson(默认)
-    - fastjson
-    - gson
-  - ProtoBuf
-  - File
-  - String
-  - byte[]
+ - Json
+   
+    - jackson ：默认，自动通过SPI的方式注入到RestClient中
+
+    - fastjson ：需要引入`fastjson`依赖,并将`FastJsonCodec`添加到RestClient中
+
+    - gson ：需要引入`gson`依赖,并将`GsonCodec`添加到RestClient中
+
+  - ProtoBuf ：需要引入`ProtoBuf`依赖,并将`ProtoBufCodec`添加到RestClient中
+
+  - File ：自动通过SPI的方式注入到RestClient中
+
+  - String ：自动通过SPI的方式注入到RestClient中
+
+  - byte[] ：自动通过SPI的方式注入到RestClient中
 
 除此之外`RestClient`也支持用户自定义`Encoder`。
 "/>
@@ -166,7 +194,7 @@ if (!doNotTrack) {
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/docs">v1.0.0 (Latest)</a>
+	<a class="dropdown-item" href="/docs">v1.0.1 (Latest)</a>
 	
 	<a class="dropdown-item" href="/docs-v0.1.0">v0.1.0</a>
 	
@@ -265,67 +293,6 @@ if (!doNotTrack) {
   <input type="checkbox" id="m-docsprocess_of_restclient-check"/>
   <label for="m-docsprocess_of_restclient-check"><a href="/docs/process_of_restclient/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docsprocess_of_restclient"><span class="">生命周期</span></a></label>
   
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssomething_more-li">
-  <input type="checkbox" id="m-docssomething_more-check"/>
-  <label for="m-docssomething_more-check"><a href="/docs/something_more/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_more"><span class="">Something More</span></a></label>
-  
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moregetting_started-li">
-  <input type="checkbox" id="m-docssomething_moregetting_started-check"/>
-  <label for="m-docssomething_moregetting_started-check"><a href="/docs/something_more/getting_started/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moregetting_started"><span class="">Getting Started</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssomething_moreinterceptor-li">
-  <input type="checkbox" id="m-docssomething_moreinterceptor-check"/>
-  <label for="m-docssomething_moreinterceptor-check"><a href="/docs/something_more/interceptor/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moreinterceptor"><span class="">Interceptor</span></a></label>
-  
-  <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moreinterceptorembedded_interceptors-li">
-  <input type="checkbox" id="m-docssomething_moreinterceptorembedded_interceptors-check"/>
-  <label for="m-docssomething_moreinterceptorembedded_interceptors-check"><a href="/docs/something_more/interceptor/embedded_interceptors/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docssomething_moreinterceptorembedded_interceptors"><span class="">内置Interceptor</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moreinterceptoruseages-li">
-  <input type="checkbox" id="m-docssomething_moreinterceptoruseages-check"/>
-  <label for="m-docssomething_moreinterceptoruseages-check"><a href="/docs/something_more/interceptor/useages/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docssomething_moreinterceptoruseages"><span class="">使用方式</span></a></label>
-  
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssomething_morefilter-li">
-  <input type="checkbox" id="m-docssomething_morefilter-check"/>
-  <label for="m-docssomething_morefilter-check"><a href="/docs/something_more/filter/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_morefilter"><span class="">Filter</span></a></label>
-  
-  <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_morefilteruseages-li">
-  <input type="checkbox" id="m-docssomething_morefilteruseages-check"/>
-  <label for="m-docssomething_morefilteruseages-check"><a href="/docs/something_more/filter/useages/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docssomething_morefilteruseages"><span class="">使用方式</span></a></label>
-  
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moredns_ext-li">
-  <input type="checkbox" id="m-docssomething_moredns_ext-check"/>
-  <label for="m-docssomething_moredns_ext-check"><a href="/docs/something_more/dns_ext/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moredns_ext"><span class="">DNS扩展</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_morecustomize_handle-li">
-  <input type="checkbox" id="m-docssomething_morecustomize_handle-check"/>
-  <label for="m-docssomething_morecustomize_handle-check"><a href="/docs/something_more/customize_handle/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_morecustomize_handle"><span class="">自定义响应处理</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moresegemented_read_write-li">
-  <input type="checkbox" id="m-docssomething_moresegemented_read_write-check"/>
-  <label for="m-docssomething_moresegemented_read_write-check"><a href="/docs/something_more/segemented_read_write/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moresegemented_read_write"><span class="">分块读写</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_morefile_upload_download-li">
-  <input type="checkbox" id="m-docssomething_morefile_upload_download-check"/>
-  <label for="m-docssomething_morefile_upload_download-check"><a href="/docs/something_more/file_upload_download/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_morefile_upload_download"><span class="">文件上传及下载</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moreconnection_pool_config-li">
-  <input type="checkbox" id="m-docssomething_moreconnection_pool_config-check"/>
-  <label for="m-docssomething_moreconnection_pool_config-check"><a href="/docs/something_more/connection_pool_config/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moreconnection_pool_config"><span class="">连接池配置</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moremetrics-li">
-  <input type="checkbox" id="m-docssomething_moremetrics-check"/>
-  <label for="m-docssomething_moremetrics-check"><a href="/docs/something_more/metrics/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moremetrics"><span class="">指标统计</span></a></label>
-  
-</li>
-  </ul>
 </li>
   </ul>
 </li>
@@ -352,7 +319,12 @@ if (!doNotTrack) {
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
     <li><a href="#使用json-encoder">使用Json Encoder</a></li>
-    <li><a href="#使用protobuf-encoder">使用ProtoBuf Encoder</a></li>
+    <li><a href="#使用protobuf-encoder">使用ProtoBuf Encoder</a>
+      <ul>
+        <li><a href="#step1--引入protobuf依赖">Step1 : 引入ProtoBuf依赖</a></li>
+        <li><a href="#step2--使用-protobuf-encoder-进行编码">Step2 : 使用 ProtoBuf Encoder 进行编码</a></li>
+      </ul>
+    </li>
     <li><a href="#使用file-encoder">使用File Encoder</a></li>
     <li><a href="#使用string-encoder">使用String Encoder</a></li>
     <li><a href="#使用byte-encoder">使用byte[] Encoder</a></li>
@@ -394,13 +366,13 @@ if (!doNotTrack) {
         
           <li><a class="taxonomy-term" href="/tags/architecture/" data-taxonomy-term="architecture"><span class="taxonomy-label">architecture</span><span class="taxonomy-count">1</span></a></li>
         
-          <li><a class="taxonomy-term" href="/tags/config/" data-taxonomy-term="config"><span class="taxonomy-label">config</span><span class="taxonomy-count">3</span></a></li>
+          <li><a class="taxonomy-term" href="/tags/config/" data-taxonomy-term="config"><span class="taxonomy-label">config</span><span class="taxonomy-count">2</span></a></li>
         
-          <li><a class="taxonomy-term" href="/tags/example/" data-taxonomy-term="example"><span class="taxonomy-label">example</span><span class="taxonomy-count">3</span></a></li>
+          <li><a class="taxonomy-term" href="/tags/example/" data-taxonomy-term="example"><span class="taxonomy-label">example</span><span class="taxonomy-count">2</span></a></li>
         
-          <li><a class="taxonomy-term" href="/tags/extension/" data-taxonomy-term="extension"><span class="taxonomy-label">extension</span><span class="taxonomy-count">17</span></a></li>
+          <li><a class="taxonomy-term" href="/tags/extension/" data-taxonomy-term="extension"><span class="taxonomy-label">extension</span><span class="taxonomy-count">11</span></a></li>
         
-          <li><a class="taxonomy-term" href="/tags/usage/" data-taxonomy-term="usage"><span class="taxonomy-label">usage</span><span class="taxonomy-count">15</span></a></li>
+          <li><a class="taxonomy-term" href="/tags/usage/" data-taxonomy-term="usage"><span class="taxonomy-label">usage</span><span class="taxonomy-count">11</span></a></li>
         
       </ul>
     </div>
@@ -442,17 +414,32 @@ if (!doNotTrack) {
 	<h1>Encoder</h1>
 	<div class="lead"><p><code>RestClient</code>会自动根据用户的 <code>Headers</code> 与 <code>Entity</code> 等选择合适的<code>Encoder</code>进行<code>Encode</code>。其内置了下面这些<code>Encoder</code>：</p>
 <ul>
-<li>Json
+<li>
+<p>Json</p>
 <ul>
-<li>jackson(默认)</li>
-<li>fastjson</li>
-<li>gson</li>
+<li>
+<p>jackson ：默认，自动通过SPI的方式注入到RestClient中</p>
+</li>
+<li>
+<p>fastjson ：需要引入<code>fastjson</code>依赖,并将<code>FastJsonCodec</code>添加到RestClient中</p>
+</li>
+<li>
+<p>gson ：需要引入<code>gson</code>依赖,并将<code>GsonCodec</code>添加到RestClient中</p>
+</li>
 </ul>
 </li>
-<li>ProtoBuf</li>
-<li>File</li>
-<li>String</li>
-<li>byte[]</li>
+<li>
+<p>ProtoBuf ：需要引入<code>ProtoBuf</code>依赖,并将<code>ProtoBufCodec</code>添加到RestClient中</p>
+</li>
+<li>
+<p>File ：自动通过SPI的方式注入到RestClient中</p>
+</li>
+<li>
+<p>String ：自动通过SPI的方式注入到RestClient中</p>
+</li>
+<li>
+<p>byte[] ：自动通过SPI的方式注入到RestClient中</p>
+</li>
 </ul>
 <p>除此之外<code>RestClient</code>也支持用户自定义<code>Encoder</code>。</p>
 </div>
@@ -499,8 +486,18 @@ if (!doNotTrack) {
 </div>
 
 <h2 id="使用protobuf-encoder">使用ProtoBuf Encoder</h2>
-<p>指定<code>contentType</code>为<code>ProtoBufCodec.PROTO_BUF</code>，且<code>Entity</code>类型为<code>com.google.protobuf.Message</code>的子类时，将自动使用<code>ProtoBuf Encoder</code>来对<code>Entity</code>来进行<code>Encode</code>。示例如下：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">RestClient</span> <span style="color:#000">client</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">RestClient</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ofDefault</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<h3 id="step1--引入protobuf依赖">Step1 : 引入ProtoBuf依赖</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;dependency&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>com.google.protobuf<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>protobuf-java<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/dependency&gt;</span>
+</code></pre></div><h3 id="step2--使用-protobuf-encoder-进行编码">Step2 : 使用 ProtoBuf Encoder 进行编码</h3>
+<p>将ProtoBufCodec加入到RestClient中，指定<code>contentType</code>为<code>ProtoBufCodec.PROTO_BUF</code>，且<code>Entity</code>类型为<code>com.google.protobuf.Message</code>的子类时，将自动使用<code>ProtoBuf Encoder</code>来对<code>Entity</code>来进行<code>Encode</code>。示例如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">//将ProtoBufCodec加入到RestClient中
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">RestClient</span> <span style="color:#000">client</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">RestClient</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">create</span><span style="color:#ce5c00;font-weight:bold">()</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addEncoder</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ProtoBufCodec</span><span style="color:#ce5c00;font-weight:bold">())</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">build</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
 <span style="color:#000">RestResponseBase</span> <span style="color:#000">response</span>  <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">post</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;localhost:8080/aaa&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">contentType</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ProtoBufCodec</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PROTO_BUF</span><span style="color:#ce5c00;font-weight:bold">)</span>
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">entity</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">message</span><span style="color:#ce5c00;font-weight:bold">)</span>
@@ -537,7 +534,7 @@ if (!doNotTrack) {
 
     <span style="color:#5c35cc;font-weight:bold">@Override</span>
     <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">RequestContent</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">byte</span><span style="color:#ce5c00;font-weight:bold">[]&gt;</span> <span style="color:#000">doEncode</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">EncodeContext</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">byte</span><span style="color:#ce5c00;font-weight:bold">[]&gt;</span> <span style="color:#000">ctx</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
-        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">contentType</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">MediaType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TEXT_PLAIN</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MediaType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TEXT_PLAIN</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isCompatibleWith</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">contentType</span><span style="color:#ce5c00;font-weight:bold">()))</span> <span style="color:#ce5c00;font-weight:bold">{</span>
             <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">entity</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">!=</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
                 <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">RequestContent</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">of</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">entity</span><span style="color:#ce5c00;font-weight:bold">().</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
             <span style="color:#ce5c00;font-weight:bold">}</span> <span style="color:#204a87;font-weight:bold">else</span> <span style="color:#ce5c00;font-weight:bold">{</span>
@@ -714,7 +711,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified February 22, 2022: <a href="https://github.com/esastack/esa-restclient/commit/f7f744774488a0af2dcf21a402bd8bf9ad955c0f">add more docs (f7f7447)</a>
+  Last modified March 7, 2022: <a href="https://github.com/esastack/esa-restclient/commit/8cd3fed2fc314de958c822960a2343fa3654a9cf">optimize the docs of decoder and encoder (8cd3fed)</a>
 </div>
 
 </div>

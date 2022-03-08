@@ -22,12 +22,17 @@
 <meta name="description" content="`RestClient`会自动根据用户的 `Headers` 与 期望`Entity`类型 等选择合适的`Decoder`进行解码。`RestClient`内置了下面这些`Decoder`：
 
   - Json
-    - jackson(默认)
-    - fastjson
-    - gson
-  - ProtoBuf
-  - String  
-  - byte[]  
+    - jackson ：默认，自动通过SPI的方式注入到RestClient中
+
+    - fastjson ：需要引入`fastjson`依赖,并将`FastJsonCodec`添加到RestClient中
+
+    - gson ：需要引入`gson`依赖,并将`GsonCodec`添加到RestClient中
+
+  - ProtoBuf ：需要引入`ProtoBuf`依赖,并将`ProtoBufCodec`添加到RestClient中
+
+  - String ：自动通过SPI的方式注入到RestClient中
+
+  - byte[]  ：自动通过SPI的方式注入到RestClient中
 
   除此之外`RestClient`也支持用户自定义解码器。
 ">
@@ -35,46 +40,61 @@
 <meta property="og:description" content="`RestClient`会自动根据用户的 `Headers` 与 期望`Entity`类型 等选择合适的`Decoder`进行解码。`RestClient`内置了下面这些`Decoder`：
 
   - Json
-    - jackson(默认)
-    - fastjson
-    - gson
-  - ProtoBuf
-  - String  
-  - byte[]  
+    - jackson ：默认，自动通过SPI的方式注入到RestClient中
+
+    - fastjson ：需要引入`fastjson`依赖,并将`FastJsonCodec`添加到RestClient中
+
+    - gson ：需要引入`gson`依赖,并将`GsonCodec`添加到RestClient中
+
+  - ProtoBuf ：需要引入`ProtoBuf`依赖,并将`ProtoBufCodec`添加到RestClient中
+
+  - String ：自动通过SPI的方式注入到RestClient中
+
+  - byte[]  ：自动通过SPI的方式注入到RestClient中
 
   除此之外`RestClient`也支持用户自定义解码器。
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/codec/decoder/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2022-02-22T10:53:13+08:00" /><meta property="og:site_name" content="ESA Restclient" />
+<meta property="article:modified_time" content="2022-03-07T16:05:09+08:00" /><meta property="og:site_name" content="ESA Restclient" />
 
 <meta itemprop="name" content="Decoder">
 <meta itemprop="description" content="`RestClient`会自动根据用户的 `Headers` 与 期望`Entity`类型 等选择合适的`Decoder`进行解码。`RestClient`内置了下面这些`Decoder`：
 
   - Json
-    - jackson(默认)
-    - fastjson
-    - gson
-  - ProtoBuf
-  - String  
-  - byte[]  
+    - jackson ：默认，自动通过SPI的方式注入到RestClient中
+
+    - fastjson ：需要引入`fastjson`依赖,并将`FastJsonCodec`添加到RestClient中
+
+    - gson ：需要引入`gson`依赖,并将`GsonCodec`添加到RestClient中
+
+  - ProtoBuf ：需要引入`ProtoBuf`依赖,并将`ProtoBufCodec`添加到RestClient中
+
+  - String ：自动通过SPI的方式注入到RestClient中
+
+  - byte[]  ：自动通过SPI的方式注入到RestClient中
 
   除此之外`RestClient`也支持用户自定义解码器。
 ">
-<meta itemprop="dateModified" content="2022-02-22T10:53:13+08:00" />
-<meta itemprop="wordCount" content="270">
+<meta itemprop="dateModified" content="2022-03-07T16:05:09+08:00" />
+<meta itemprop="wordCount" content="282">
 <meta itemprop="keywords" content="extension," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Decoder"/>
 <meta name="twitter:description" content="`RestClient`会自动根据用户的 `Headers` 与 期望`Entity`类型 等选择合适的`Decoder`进行解码。`RestClient`内置了下面这些`Decoder`：
 
   - Json
-    - jackson(默认)
-    - fastjson
-    - gson
-  - ProtoBuf
-  - String  
-  - byte[]  
+    - jackson ：默认，自动通过SPI的方式注入到RestClient中
+
+    - fastjson ：需要引入`fastjson`依赖,并将`FastJsonCodec`添加到RestClient中
+
+    - gson ：需要引入`gson`依赖,并将`GsonCodec`添加到RestClient中
+
+  - ProtoBuf ：需要引入`ProtoBuf`依赖,并将`ProtoBufCodec`添加到RestClient中
+
+  - String ：自动通过SPI的方式注入到RestClient中
+
+  - byte[]  ：自动通过SPI的方式注入到RestClient中
 
   除此之外`RestClient`也支持用户自定义解码器。
 "/>
@@ -162,7 +182,7 @@ if (!doNotTrack) {
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/docs">v1.0.0 (Latest)</a>
+	<a class="dropdown-item" href="/docs">v1.0.1 (Latest)</a>
 	
 	<a class="dropdown-item" href="/docs-v0.1.0">v0.1.0</a>
 	
@@ -261,67 +281,6 @@ if (!doNotTrack) {
   <input type="checkbox" id="m-docsprocess_of_restclient-check"/>
   <label for="m-docsprocess_of_restclient-check"><a href="/docs/process_of_restclient/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docsprocess_of_restclient"><span class="">生命周期</span></a></label>
   
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssomething_more-li">
-  <input type="checkbox" id="m-docssomething_more-check"/>
-  <label for="m-docssomething_more-check"><a href="/docs/something_more/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_more"><span class="">Something More</span></a></label>
-  
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moregetting_started-li">
-  <input type="checkbox" id="m-docssomething_moregetting_started-check"/>
-  <label for="m-docssomething_moregetting_started-check"><a href="/docs/something_more/getting_started/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moregetting_started"><span class="">Getting Started</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssomething_moreinterceptor-li">
-  <input type="checkbox" id="m-docssomething_moreinterceptor-check"/>
-  <label for="m-docssomething_moreinterceptor-check"><a href="/docs/something_more/interceptor/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moreinterceptor"><span class="">Interceptor</span></a></label>
-  
-  <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moreinterceptorembedded_interceptors-li">
-  <input type="checkbox" id="m-docssomething_moreinterceptorembedded_interceptors-check"/>
-  <label for="m-docssomething_moreinterceptorembedded_interceptors-check"><a href="/docs/something_more/interceptor/embedded_interceptors/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docssomething_moreinterceptorembedded_interceptors"><span class="">内置Interceptor</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moreinterceptoruseages-li">
-  <input type="checkbox" id="m-docssomething_moreinterceptoruseages-check"/>
-  <label for="m-docssomething_moreinterceptoruseages-check"><a href="/docs/something_more/interceptor/useages/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docssomething_moreinterceptoruseages"><span class="">使用方式</span></a></label>
-  
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssomething_morefilter-li">
-  <input type="checkbox" id="m-docssomething_morefilter-check"/>
-  <label for="m-docssomething_morefilter-check"><a href="/docs/something_more/filter/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_morefilter"><span class="">Filter</span></a></label>
-  
-  <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_morefilteruseages-li">
-  <input type="checkbox" id="m-docssomething_morefilteruseages-check"/>
-  <label for="m-docssomething_morefilteruseages-check"><a href="/docs/something_more/filter/useages/" class="align-left pl-0  td-sidebar-link td-sidebar-link__page" id="m-docssomething_morefilteruseages"><span class="">使用方式</span></a></label>
-  
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moredns_ext-li">
-  <input type="checkbox" id="m-docssomething_moredns_ext-check"/>
-  <label for="m-docssomething_moredns_ext-check"><a href="/docs/something_more/dns_ext/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moredns_ext"><span class="">DNS扩展</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_morecustomize_handle-li">
-  <input type="checkbox" id="m-docssomething_morecustomize_handle-check"/>
-  <label for="m-docssomething_morecustomize_handle-check"><a href="/docs/something_more/customize_handle/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_morecustomize_handle"><span class="">自定义响应处理</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moresegemented_read_write-li">
-  <input type="checkbox" id="m-docssomething_moresegemented_read_write-check"/>
-  <label for="m-docssomething_moresegemented_read_write-check"><a href="/docs/something_more/segemented_read_write/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moresegemented_read_write"><span class="">分块读写</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_morefile_upload_download-li">
-  <input type="checkbox" id="m-docssomething_morefile_upload_download-check"/>
-  <label for="m-docssomething_morefile_upload_download-check"><a href="/docs/something_more/file_upload_download/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_morefile_upload_download"><span class="">文件上传及下载</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moreconnection_pool_config-li">
-  <input type="checkbox" id="m-docssomething_moreconnection_pool_config-check"/>
-  <label for="m-docssomething_moreconnection_pool_config-check"><a href="/docs/something_more/connection_pool_config/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moreconnection_pool_config"><span class="">连接池配置</span></a></label>
-  
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssomething_moremetrics-li">
-  <input type="checkbox" id="m-docssomething_moremetrics-check"/>
-  <label for="m-docssomething_moremetrics-check"><a href="/docs/something_more/metrics/" class="align-left pl-0  td-sidebar-link td-sidebar-link__section" id="m-docssomething_moremetrics"><span class="">指标统计</span></a></label>
-  
-</li>
-  </ul>
 </li>
   </ul>
 </li>
@@ -348,7 +307,12 @@ if (!doNotTrack) {
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
     <li><a href="#使用json-decoder">使用Json Decoder</a></li>
-    <li><a href="#使用protobuf-decoder">使用ProtoBuf Decoder</a></li>
+    <li><a href="#使用protobuf-decoder">使用ProtoBuf Decoder</a>
+      <ul>
+        <li><a href="#step1--引入protobuf依赖">Step1 : 引入ProtoBuf依赖</a></li>
+        <li><a href="#step2--使用-protobuf-decoder-进行解码">Step2 : 使用 ProtoBuf Decoder 进行解码</a></li>
+      </ul>
+    </li>
     <li><a href="#使用string-encoder">使用String Encoder</a></li>
     <li><a href="#使用byte-encoder">使用byte[] Encoder</a></li>
     <li><a href="#自定义decoder">自定义Decoder</a>
@@ -389,13 +353,13 @@ if (!doNotTrack) {
         
           <li><a class="taxonomy-term" href="/tags/architecture/" data-taxonomy-term="architecture"><span class="taxonomy-label">architecture</span><span class="taxonomy-count">1</span></a></li>
         
-          <li><a class="taxonomy-term" href="/tags/config/" data-taxonomy-term="config"><span class="taxonomy-label">config</span><span class="taxonomy-count">3</span></a></li>
+          <li><a class="taxonomy-term" href="/tags/config/" data-taxonomy-term="config"><span class="taxonomy-label">config</span><span class="taxonomy-count">2</span></a></li>
         
-          <li><a class="taxonomy-term" href="/tags/example/" data-taxonomy-term="example"><span class="taxonomy-label">example</span><span class="taxonomy-count">3</span></a></li>
+          <li><a class="taxonomy-term" href="/tags/example/" data-taxonomy-term="example"><span class="taxonomy-label">example</span><span class="taxonomy-count">2</span></a></li>
         
-          <li><a class="taxonomy-term" href="/tags/extension/" data-taxonomy-term="extension"><span class="taxonomy-label">extension</span><span class="taxonomy-count">17</span></a></li>
+          <li><a class="taxonomy-term" href="/tags/extension/" data-taxonomy-term="extension"><span class="taxonomy-label">extension</span><span class="taxonomy-count">11</span></a></li>
         
-          <li><a class="taxonomy-term" href="/tags/usage/" data-taxonomy-term="usage"><span class="taxonomy-label">usage</span><span class="taxonomy-count">15</span></a></li>
+          <li><a class="taxonomy-term" href="/tags/usage/" data-taxonomy-term="usage"><span class="taxonomy-label">usage</span><span class="taxonomy-count">11</span></a></li>
         
       </ul>
     </div>
@@ -437,16 +401,29 @@ if (!doNotTrack) {
 	<h1>Decoder</h1>
 	<div class="lead"><p><code>RestClient</code>会自动根据用户的 <code>Headers</code> 与 期望<code>Entity</code>类型 等选择合适的<code>Decoder</code>进行解码。<code>RestClient</code>内置了下面这些<code>Decoder</code>：</p>
 <ul>
-<li>Json
+<li>
+<p>Json</p>
 <ul>
-<li>jackson(默认)</li>
-<li>fastjson</li>
-<li>gson</li>
+<li>
+<p>jackson ：默认，自动通过SPI的方式注入到RestClient中</p>
+</li>
+<li>
+<p>fastjson ：需要引入<code>fastjson</code>依赖,并将<code>FastJsonCodec</code>添加到RestClient中</p>
+</li>
+<li>
+<p>gson ：需要引入<code>gson</code>依赖,并将<code>GsonCodec</code>添加到RestClient中</p>
+</li>
 </ul>
 </li>
-<li>ProtoBuf</li>
-<li>String</li>
-<li>byte[]</li>
+<li>
+<p>ProtoBuf ：需要引入<code>ProtoBuf</code>依赖,并将<code>ProtoBufCodec</code>添加到RestClient中</p>
+</li>
+<li>
+<p>String ：自动通过SPI的方式注入到RestClient中</p>
+</li>
+<li>
+<p>byte[]  ：自动通过SPI的方式注入到RestClient中</p>
+</li>
 </ul>
 <p>除此之外<code>RestClient</code>也支持用户自定义解码器。</p>
 </div>
@@ -495,14 +472,24 @@ if (!doNotTrack) {
 </div>
 
 <h2 id="使用protobuf-decoder">使用ProtoBuf Decoder</h2>
-<p>当Response的<code>contentType</code>为<code>ProtoBufCodec.PROTO_BUF</code>，且<code>response.bodyToEntity()</code>传入的类型为<code>com.google.protobuf.Message</code>的子类时，将自动使用<code>ProtoBuf Decoder</code>来进行<code>Decode</code>。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">RestClient</span> <span style="color:#000">client</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">RestClient</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ofDefault</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<h3 id="step1--引入protobuf依赖">Step1 : 引入ProtoBuf依赖</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;dependency&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;groupId&gt;</span>com.google.protobuf<span style="color:#204a87;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;artifactId&gt;</span>protobuf-java<span style="color:#204a87;font-weight:bold">&lt;/artifactId&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/dependency&gt;</span>
+</code></pre></div><h3 id="step2--使用-protobuf-decoder-进行解码">Step2 : 使用 ProtoBuf Decoder 进行解码</h3>
+<p>将ProtoBufCodec加入到RestClient中， 当Response的<code>contentType</code>为<code>ProtoBufCodec.PROTO_BUF</code>，且<code>response.bodyToEntity()</code>传入的类型为<code>com.google.protobuf.Message</code>的子类时，将自动使用<code>ProtoBuf Decoder</code>来进行<code>Decode</code>。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#8f5902;font-style:italic">//将ProtoBufCodec加入到RestClient中
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">final</span> <span style="color:#000">RestClient</span> <span style="color:#000">client</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">RestClient</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">create</span><span style="color:#ce5c00;font-weight:bold">()</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addDecoder</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">ProtoBufCodec</span><span style="color:#ce5c00;font-weight:bold">())</span>
+        <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">build</span><span style="color:#ce5c00;font-weight:bold">();</span>
+
 <span style="color:#000">RestResponseBase</span> <span style="color:#000">response</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#34;localhost:8080/aaa&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">execute</span><span style="color:#ce5c00;font-weight:bold">()</span>
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toCompletableFuture</span><span style="color:#ce5c00;font-weight:bold">()</span>
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">();</span>
 
-<span style="color:#8f5902;font-style:italic">//当 response.contentType() == ProtoBufCodec.PROTO_BUF，且 Person 为 Message 的子类时，将自动使用ProtoBuf Decoder
+<span style="color:#8f5902;font-style:italic">//当 ProtoBufCodec.PROTO_BUF.isCompatibleWith(response.contentType())，且 Person 为 Message 的子类时，将自动使用ProtoBuf Decoder
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Person</span> <span style="color:#000">person</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">bodyToEntity</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Person</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">);</span>
 
 </code></pre></div><h2 id="使用string-encoder">使用String Encoder</h2>
@@ -513,7 +500,7 @@ if (!doNotTrack) {
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toCompletableFuture</span><span style="color:#ce5c00;font-weight:bold">()</span>
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">();</span>
 
-<span style="color:#8f5902;font-style:italic">//当 response.contentType() != MediaType.APPLICATION_JSON 时，自动使用String Decoder来进行Decode
+<span style="color:#8f5902;font-style:italic">//当 !MediaType.APPLICATION_JSON.isCompatibleWith(response.contentType()) 时，自动使用String Decoder来进行Decode
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">String</span> <span style="color:#000">result</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">bodyToEntity</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">);</span>
 
 </code></pre></div><h2 id="使用byte-encoder">使用byte[] Encoder</h2>
@@ -524,7 +511,7 @@ if (!doNotTrack) {
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toCompletableFuture</span><span style="color:#ce5c00;font-weight:bold">()</span>
         <span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">get</span><span style="color:#ce5c00;font-weight:bold">();</span>
 
-<span style="color:#8f5902;font-style:italic">//当 response.contentType() != MediaType.APPLICATION_JSON 时，自动使用byte[] Decoder来进行Decode
+<span style="color:#8f5902;font-style:italic">//当 !MediaType.APPLICATION_JSON.isCompatibleWith(response.contentType()) 时，自动使用byte[] Decoder来进行Decode
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">byte</span><span style="color:#ce5c00;font-weight:bold">[]</span> <span style="color:#000">result</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">bodyToEntity</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">byte</span><span style="color:#ce5c00;font-weight:bold">[].</span><span style="color:#c4a000">class</span><span style="color:#ce5c00;font-weight:bold">);</span>
 </code></pre></div><h2 id="自定义decoder">自定义Decoder</h2>
 <p>当<code>RestClient</code>内置的<code>Decoder</code>无法满足用户需求时，用户可以自定义<code>Decoder</code>，示例如下：</p>
@@ -704,7 +691,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified February 22, 2022: <a href="https://github.com/esastack/esa-restclient/commit/f7f744774488a0af2dcf21a402bd8bf9ad955c0f">add more docs (f7f7447)</a>
+  Last modified March 7, 2022: <a href="https://github.com/esastack/esa-restclient/commit/8cd3fed2fc314de958c822960a2343fa3654a9cf">optimize the docs of decoder and encoder (8cd3fed)</a>
 </div>
 
 </div>
